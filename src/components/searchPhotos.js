@@ -35,11 +35,13 @@ class SearchPhotos extends Component {
       })
       .then(function (data) {
         data.results.forEach((photo) => {
-          let result = `
-          <img src ="${photo.urls.regular}" height="200" width="200">
-          <a href="${photo.links.download}">
+          let result = ` 
+          <input type="checkbox" id="checkbox-image${photo.id}" />
+            <label className="label">
+            <img src ="${photo.urls.regular}" height="200" width="200"            
+             </label>
           `;
-          $("#result").append(result);
+          $(".image-result-main").append(result);
         });
       });
   };
@@ -48,9 +50,6 @@ class SearchPhotos extends Component {
     const { query } = this.state;
     return (
       <div className="form">
-        <p>query is {query} </p>
-        <p> {this.state.query} </p>
-        <p id="result"> </p>
         <form className="search-form" onSubmit={this.handleSubmit}>
           <div className="form-input">
             <input
@@ -61,12 +60,14 @@ class SearchPhotos extends Component {
             />
           </div>
           <button type="submit" value="submit">
-            submit
+            {" "}
+            submit{" "}
           </button>
           <button onClick={this.handleReset} type="reset" value="reset">
             {" "}
             reset form{" "}
           </button>
+          <div className="image-result-main"></div>
         </form>
       </div>
     );

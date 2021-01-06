@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import SearchPhotos from "./components/searchPhotos";
+
 require("dotenv").config();
 
 function App() {
