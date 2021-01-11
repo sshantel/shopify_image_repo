@@ -51,14 +51,15 @@ export default function SearchPhotos(props) {
           <div className="card">
             <input type="checkbox" id={`cb-${photo.id}`} />
             <label className="checkbox" for={`cb-${photo.id}`}>
+              <div className="caption"> {photo.alt_description} </div>
+
               <img
                 className="card--photo"
                 src={photo.urls.small}
                 width="200"
-                alt={photo.alt_description}
+                height="200"
               />
             </label>
-            <p> {photo.alt_description} </p>
           </div>
         ))}
       </div>
