@@ -20,10 +20,17 @@ input[type="checkbox"][id^="cb-"] {
   overflow: hidden;
 }
 
+.card {
+  position: relative;
+}
 .caption {
   position: absolute;
   opacity: 0;
+  flex-wrap: wrap;
+  width: 50%;
+  padding: 25px;
 }
-.caption:hover {
+.card:hover .caption {
   opacity: 1;
+  color: white;
 }
