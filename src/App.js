@@ -12,7 +12,7 @@ function App() {
         <h1 className="header"> Shopify Image Repository </h1>
         <h1 className="upload"> Upload file to image repository</h1>
         <FileUploader />
-        <h1 className="title">React Photo Search </h1>
+        <h1 className="title">Search for an image</h1>
         <SearchPhotos />
       </div>
     </div>
