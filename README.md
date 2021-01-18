@@ -17,8 +17,10 @@ This project was created for Shopify's <a href="https://jobs.smartrecruiters.com
 
 #### Requirements:
 
-- [Cloudinary API Key](https://cloudinary.com/documentation/admin_api)
-- [Unsplash API Key] (https://unsplash.com/developers)
+## Obtain the following APIs:
+
+- [Cloudinary](https://cloudinary.com/documentation/admin_api)
+- [Unsplash] (https://unsplash.com/developers)
 
   <br>
   <b>Clone repository:</b>
