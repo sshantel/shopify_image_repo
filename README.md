@@ -18,7 +18,9 @@ This project was created for Shopify's <a href="https://jobs.smartrecruiters.com
 #### Requirements:
 
 - [Cloudinary API Key](https://cloudinary.com/documentation/admin_api)
-  Clone repository:
+
+<br> 
+<b>Clone repository:</b>
 
 ```
 $ git clone https://github.com/sshantel/shopify-image-repo
