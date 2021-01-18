@@ -28,7 +28,7 @@ $ git clone https://github.com/sshantel/shopify-image-repo
 
 <b>Replace 'process.env.REACT_APP_API_KEY...' in the Cloudinary.js file with Cloudinary API keys, or store them in your .env</b>
 
-Start App:
+<b>Run App:</b>
 
 ```
 $ cd shopify-image-repo
