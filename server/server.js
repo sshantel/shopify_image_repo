@@ -6,7 +6,7 @@ var cors = require("cors");
 
 app.use(express.json({ limit: "100mb" }));
 app.use(express.static("public"));
-app.use(express.urlencoded({ limit: "50mb", extended: true }));
+app.use(express.urlencosded({ limit: "50mb", extended: true }));
 app.use(cors());
 
 app.post("/api/search", async (req, res) => {

@@ -3,7 +3,6 @@ import React, { useState } from "react";
 export default function FileUploader() {
   const [previewImage, setPreviewImage] = useState();
   const [fileInputState, setFileInputState] = useState("");
-  const [selectedFile, setSelectedFile] = useState("");
   const [tag, setTag] = useState("");
   const [caption, setCaption] = useState("");
 
