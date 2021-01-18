@@ -20,7 +20,7 @@ This project was created for Shopify's <a href="https://jobs.smartrecruiters.com
 - [Cloudinary](https://cloudinary.com/documentation/admin_api)
 - [Unsplash] (https://unsplash.com/developers)
 
-  <b>Clone repository:</b>
+<b>Clone repository:</b>
 
 ```
 $ git clone https://github.com/sshantel/shopify-image-repo
