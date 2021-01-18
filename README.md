@@ -26,7 +26,9 @@ This project was created for Shopify's <a href="https://jobs.smartrecruiters.com
 $ git clone https://github.com/sshantel/shopify-image-repo
 ```
 
-<b>Replace 'process.env.REACT_APP_API_KEY...' in the Cloudinary.js file with Cloudinary API keys, or store them in your .env. Do the same for the Unsplash API, located in searchPhotos.js</b>
+<b>Store API Keys</b>
+
+<b>Replace <i>process.env.REACT_APP_API_KEY</i> in the Cloudinary.js file with Cloudinary API keys, or store them in your .env. Do the same for the Unsplash API, located in searchPhotos.js</b>
 
 <b>Run App:</b>
 
