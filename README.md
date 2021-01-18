@@ -2,8 +2,7 @@ This project was created for Shopify's <a href="https://jobs.smartrecruiters.com
 
 ![](images/shopify_giphy.gif)
 
-\*I was able to implement the following features:
--SEARCH function
-from text
--ADD image(s) to the repository
-one / bulk / enormous amount of images
+<b>I was able to implement the following features:</b>
+
+1. SEARCH function(from text)
+2. ADD image(s) to the repository(image by image)
