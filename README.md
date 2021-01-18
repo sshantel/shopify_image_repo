@@ -1,17 +1,5 @@
-# Getting Started with Create React App
+# Getting Started with Shopify Image Repository
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created for Shopify's <a href="https://jobs.smartrecruiters.com/ni/Shopify/1529b84e-da5f-49d4-b408-09f0050732be-backend-developer-intern-remote-summer-2021">Backend Developer Internship Summer 2021.
 
 ![](images/shopify_giphy.gif)
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
