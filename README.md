@@ -8,10 +8,10 @@ This project was created for Shopify's <a href="https://jobs.smartrecruiters.com
 
 ## <a name="features"></a>Features
 
-<b>I was able to implement the following features:</b>
+<b>The following features were implemented:</b>
 
-1. SEARCH function(from text)
-2. ADD image(s) to the repository(image by image)
+- SEARCH function(from text)
+- ADD image(s) to the repository(image by image)
 
 ## <a name="installation"></a>Setup/Installation
 
@@ -20,7 +20,6 @@ This project was created for Shopify's <a href="https://jobs.smartrecruiters.com
 - [Cloudinary](https://cloudinary.com/documentation/admin_api)
 - [Unsplash] (https://unsplash.com/developers)
 
-  <br>
   <b>Clone repository:</b>
 
 ```
