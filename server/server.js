@@ -30,6 +30,7 @@ app.post("/api/upload", async (req, res) => {
       {
         upload_preset: "shopify_image_repo",
         tags: req.body.tag,
+        caption: req.body.caption,
       }
     );
 

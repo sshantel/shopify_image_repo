@@ -50,7 +50,7 @@ export default function SearchPhotos(props) {
         .then((result) => {
           const filter = result.map((r) => ({
             id: r.public_id,
-            alt_description: r.filename,
+            alt_description: r.caption,
             url: r.url,
           }));
           searchUnsplash(filter);
@@ -73,6 +73,7 @@ export default function SearchPhotos(props) {
           placeholder="i.e. tea"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          autocomplete="off"
         />
         <button className="button" type="submit">
           {" "}
@@ -83,7 +84,6 @@ export default function SearchPhotos(props) {
       <div className="photo-list">
         {photos.map((photo) => (
           <div className="card" key={photo.id}>
-            <input type="checkbox" id={`cb-${photo.id}`} />
             <label for={`cb-${photo.id}`}>
               <div className="caption"> {photo.alt_description} </div>
               <img

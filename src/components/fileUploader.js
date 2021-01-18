@@ -5,6 +5,7 @@ export default function FileUploader() {
   const [fileInputState, setFileInputState] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
   const [tag, setTag] = useState("");
+  const [caption, setCaption] = useState("");
 
   const handleFileInputChange = (e) => {
     console.log(e);
@@ -31,7 +32,11 @@ export default function FileUploader() {
     try {
       await fetch("/api/upload", {
         method: "POST",
-        body: JSON.stringify({ data: base64EncodedImage, tag: tag }),
+        body: JSON.stringify({
+          data: base64EncodedImage,
+          tag: tag,
+          caption: caption,
+        }),
         headers: {
           "Content-type": "application/json",
           Accept: "application/json",
@@ -44,20 +49,40 @@ export default function FileUploader() {
   return (
     <div>
       <form onSubmit={handleSubmitFile} className="form">
+        <label className="label-tag" for="tag">
+          {" "}
+          Add tag to image
+        </label>
+        <input
+          type="text"
+          name="tag"
+          className="form-input"
+          onChange={(e) => setTag(e.target.value)}
+          autocomplete="off"
+        />
+        <br></br>
+        <label className="label-caption" for="caption">
+          {" "}
+          Add caption to image
+        </label>
+        <input
+          type="text"
+          name="caption"
+          className="form-input"
+          onChange={(e) => setCaption(e.target.value)}
+          autocomplete="off"
+        />
+        <br></br>
+        <label className="label-upload"> Upload Image</label>
         <input
           type="file"
           name="image"
           onChange={handleFileInputChange}
           value={fileInputState}
           className="form-input"
+          autocomplete="off"
         />
-        Add tag to image
-        <input
-          type="text"
-          name="tag"
-          className="form-input"
-          onChange={(e) => setTag(e.target.value)}
-        />
+        <br></br>
         <button className="btn" type="submit ">
           {" "}
           Submit{" "}
