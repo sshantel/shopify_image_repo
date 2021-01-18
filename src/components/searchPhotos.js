@@ -1,18 +1,15 @@
 import React, { useState } from "react";
+import { allKeys } from "underscore";
+import { isLet } from "@babel/types";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-//using Hooks
-//useState is a Hook. A hook is a function provided by React that let you hook into
-//React features from your function components.
+
 export default function SearchPhotos(props) {
   const [query, setQuery] = useState("");
   const [photos, setPhotos] = useState([]);
 
-  const searchPhotos = async (e) => {
-    e.preventDefault();
-
-    const url = `https://api.unsplash.com/search/photos/?page=1&per_page=10&query=${query}&client_id=${API_KEY}`;
-
+  const searchUnsplash = (prev) => {
+    const url = `https://api.unsplash.com/search/photos/?page=1&query=${query}&client_id=${API_KEY}`;
     fetch(url)
       .then((response) => {
         if (response.status === 200) {
@@ -23,10 +20,46 @@ export default function SearchPhotos(props) {
         return response.json();
       })
       .then((data) => {
-        setPhotos(data.results);
-        console.log(data);
+        let filter = data.results.map((r) => ({
+          id: r.id,
+          alt_description: r.alt_description,
+          url: r.urls.small,
+        }));
+
+        prev.map((r) => {
+          filter.push(r);
+        });
+        setPhotos(filter);
+        console.log(prev);
       });
   };
+
+  const searchPhotos = async (e) => {
+    e.preventDefault();
+    let allPhoto = [];
+    try {
+      fetch("/api/search", {
+        method: "POST",
+        body: JSON.stringify({ query: query }),
+        headers: {
+          "Content-type": "application/json",
+          Accept: "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((result) => {
+          const filter = result.map((r) => ({
+            id: r.public_id,
+            alt_description: r.filename,
+            url: r.url,
+          }));
+          searchUnsplash(filter);
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <React.Fragment>
       <form className="form" onSubmit={searchPhotos}>
@@ -46,16 +79,16 @@ export default function SearchPhotos(props) {
           Search
         </button>
       </form>
+      <br></br>
       <div className="photo-list">
         {photos.map((photo) => (
-          <div className="card">
+          <div className="card" key={photo.id}>
             <input type="checkbox" id={`cb-${photo.id}`} />
-            <label className="checkbox" for={`cb-${photo.id}`}>
+            <label for={`cb-${photo.id}`}>
               <div className="caption"> {photo.alt_description} </div>
-
               <img
                 className="card--photo"
-                src={photo.urls.small}
+                src={photo.url}
                 width="200"
                 height="200"
               />
@@ -66,77 +99,3 @@ export default function SearchPhotos(props) {
     </React.Fragment>
   );
 }
-
-// class SearchPhotos extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       query: "",
-//     };
-//   }
-
-//   handleReset = () => {
-//     Array.from(document.querySelectorAll("input")).forEach(
-//       (input) => (input.value = "")
-//     );
-//     this.setState({
-//       query: "",
-//     });
-//   };
-
-//   handleSubmit = (e) => {
-//     console.log(e);
-//     e.preventDefault();
-//     this.search(this.query.value);
-//     e.currentTarget.reset();
-//   };
-
-//   search = (query) => {
-//     console.log(query);
-//     const API_KEY = process.env.REACT_APP_API_KEY;
-//     const url = `https://api.unsplash.com/search/photos/?page=1&per_page=10&query=${query}&client_id=${API_KEY}`;
-//     fetch(url)
-//       .then(function (data) {
-//         return data.json();
-//       })
-//       .then(function (data) {
-//         data.results.forEach((photo) => {
-//           let result = `
-//           <input type="checkbox" id="checkbox-image${photo.id}"/>
-//             <label className="label">
-//             <img src ="${photo.urls.regular}" height="200" width="200"
-//              </label>
-//           `;
-//           $(".image-result-main").append(result);
-//         });
-//       });
-//   };
-
-//   render() {
-//     const { query } = this.state;
-//     return (
-//       <div className="form">
-//         <form className="search-form" onSubmit={this.handleSubmit}>
-//           <div className="form-input">
-//             <input
-//               type="text"
-//               className="search-box"
-//               placeholder="Search for..."
-//               ref={(input) => (this.query = input)}
-//             />
-//           </div>
-//           <button type="submit" value="submit">
-//             {" "}
-//             submit{" "}
-//           </button>
-//           <button onClick={this.handleReset} type="reset" value="reset">
-//             {" "}
-//             reset form{" "}
-//           </button>
-//           <div className="image-result-main"></div>
-//         </form>
-//       </div>
-//     );
-//   }
-// }
-// export default SearchPhotos;

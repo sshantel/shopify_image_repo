@@ -1,82 +1,47 @@
+const { cloudinary } = require("./utils/cloudinary");
 const express = require("express");
 const app = express();
-const cors = require("cors");
-const pool = require("./db");
 
+var cors = require("cors");
+
+app.use(express.json({ limit: "100mb" }));
+app.use(express.static("public"));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(cors());
-app.use(express.json());
 
-//add images
-app.post("/albums", async (req, res) => {
+app.post("/api/search", async (req, res) => {
+  cloudinary.search
+    .expression(req.body.query)
+    .with_field("tags")
+    .max_results(10)
+    .execute()
+    .then((result) => {
+      console.log(result.resources);
+      res.json(result.resources);
+    });
+});
+
+app.post("/api/upload", async (req, res) => {
   try {
-    const { description } = req.body;
-    const addImage = await pool.query(
-      "INSERT INTO personal (description) VALUES($1) RETURNING *",
-      [description]
+    const imageFileString = req.body.data;
+    console.log(req.body.data);
+    const imageUploadedResponse = await cloudinary.uploader.upload(
+      imageFileString,
+      {
+        upload_preset: "shopify_image_repo",
+        tags: req.body.tag,
+      }
     );
 
-    res.json(addImage.rows);
-  } catch (err) {
-    console.error(err.message);
+    console.log(imageUploadedResponse);
+    res.json({ msg: "success!" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ err: "error" });
   }
 });
+const port = process.env.PORT || 3001;
 
-//get all images
-app.get("/albums", async (req, res) => {
-  try {
-    const allImages = await pool.query("SELECT * FROM personal");
-    res.json(allImages.rows);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
-//get an image
-
-app.get("/albums/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const personal = await pool.query(
-      "SELECT * FROM personal WHERE image_id = $1",
-      [id]
-    );
-    res.json(personal.rows[0]);
-    console.log(req.params);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
-//update
-app.put("/albums/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    console.log("hi");
-    const { description } = req.body;
-    const updateImage = await pool.query(
-      "UPDATE personal SET description = $1 WHERE image_id = $2",
-      [description, id]
-    );
-    res.json("Image was updated");
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-
-//delete
-app.delete("/albums/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const deleteImage = await pool.query(
-      "DELETE FROM personal WHERE image_id = $1",
-      [id]
-    );
-    res.json("image was deleted");
-  } catch (err) {
-    console.log(err.message);
-  }
-});
-
-app.listen(5000, () => {
-  console.log("server has started on port 5000");
+app.listen(port, () => {
+  console.log(`listening on port ${port}`);
 });
