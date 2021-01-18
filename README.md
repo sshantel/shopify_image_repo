@@ -15,9 +15,7 @@ This project was created for Shopify's <a href="https://jobs.smartrecruiters.com
 
 ## <a name="installation"></a>Setup/Installation
 
-#### Requirements:
-
-## Obtain the following APIs:
+<b>Obtain the following APIs:</b>
 
 - [Cloudinary](https://cloudinary.com/documentation/admin_api)
 - [Unsplash] (https://unsplash.com/developers)
