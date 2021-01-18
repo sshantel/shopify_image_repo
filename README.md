@@ -26,7 +26,7 @@ This project was created for Shopify's <a href="https://jobs.smartrecruiters.com
 $ git clone https://github.com/sshantel/shopify-image-repo
 ```
 
-Replace 'process.env.REACT_APP_API_KEY...' in the Cloudinary.js file with Cloudinary API keys, or store them in your .env
+<b>Replace 'process.env.REACT_APP_API_KEY...' in the Cloudinary.js file with Cloudinary API keys, or store them in your .env</b>
 
 Start App:
 
