@@ -17,8 +17,8 @@ This project was created for Shopify's <a href="https://jobs.smartrecruiters.com
 
 <b>Obtain the following APIs:</b>
 
-- [Cloudinary](https://cloudinary.com/documentation/admin_api)
 - [Unsplash] (https://unsplash.com/developers)
+- [Cloudinary](https://cloudinary.com/documentation/admin_api)
 
 <b>Clone repository:</b>
 
@@ -26,9 +26,9 @@ This project was created for Shopify's <a href="https://jobs.smartrecruiters.com
 $ git clone https://github.com/sshantel/shopify-image-repo
 ```
 
-<b>Store API Keys</b>
+<b>Store API Keys:</b>
 
-<b>Replace <i>process.env.REACT_APP_API_KEY</i> in the Cloudinary.js file with Cloudinary API keys, or store them in your .env. Do the same for the Unsplash API, located in searchPhotos.js</b>
+- Replace <i>process.env.REACT_APP_API_KEY</i> in the Cloudinary.js file with Cloudinary API keys, or store them in your .env. Do the same for the Unsplash API, located in searchPhotos.js
 
 <b>Run App:</b>
 
